@@ -15,19 +15,16 @@
             border-left: 3px solid transparent;
             transition: color 0.3s ease;
         }
-        
         .toc-link:hover {
             background-color: #f7fafc;
             border-left-color: #4299e1;
         }
-        
         .toc-link.active {
             background-color: #ebf8ff;
             border-left-color: #2b6cb0;
             color: #2b6cb0;
             font-weight: bold;
         }
-        
         details > summary {
             cursor: pointer;
             padding: 1rem;
@@ -35,50 +32,39 @@
             border-radius: 0.5rem;
             margin-bottom: 0.5rem;
         }
-        
         details > summary:hover {
             background-color: #f1f5f9;
         }
-        
         details[open] > summary {
             margin-bottom: 1rem;
             background-color: #e2e8f0;
         }
-        
         .scroll-smooth {
             scroll-behavior: smooth;
         }
-        
         html {
             scroll-behavior: smooth; /* スムーズスクロールを有効化 */
         }
-        
         .list-circle {
             list-style-type: circle;
         }
-        
         body {
-            padding-bottom: 100vh; /* ページ下部に余白を追加 */
+            padding-bottom: 60vh; /* ページ下部に余白を追加 */
         }
-        
         main {
             padding-bottom: 50vh; /* メインコンテンツの下部に余白を追加 */
         }
-        
         details {
             transition: all 0.3s ease;
         }
-
         summary {
             list-style: none;
             position: relative;
             padding-right: 20px;
         }
-
         summary::-webkit-details-marker {
             display: none;
         }
-
         summary::after {
             content: '▼';
             position: absolute;
@@ -87,9 +73,11 @@
             transform: translateY(-50%);
             transition: transform 0.3s ease;
         }
-
         details[open] summary::after {
             transform: translateY(-50%) rotate(180deg);
+        }
+        #section1 {
+          margin-top: 60px;
         }
     </style>
 </head>
@@ -121,7 +109,7 @@
             <!-- ここに各セクションのコンテンツが入ります -->
             <div class="container mx-auto px-4 py-8">
                 <h1 class="text-3xl font-bold mb-8">🗺 成長を促進する環境・要素</h1>
-                
+
                 <section id="section1" class="mb-12">
                 <h2 class="text-2xl font-bold mb-6">🌟 モチベーション設計</h2>
                 <div class="space-y-6">
@@ -262,7 +250,6 @@
                         </div>
                       </div>
                     </details>
-                </div>
                 </section>
           
                 <section id="section2" class="mb-12">
@@ -2258,6 +2245,7 @@
                 </div>
             </section>
             </div>
+          </div>
 
 <!-- 最後の部分 -->
         </main>
