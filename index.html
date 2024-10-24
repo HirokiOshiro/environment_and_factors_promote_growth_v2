@@ -77,14 +77,55 @@
             transform: translateY(-50%) rotate(180deg);
         }
         #section1 {
-          margin-top: 60px;
+            margin-top: 60px;
         }
+
+        /* モバイル向けスタイル */
+    @media (max-width: 768px) {
+      #toc {
+        position: fixed;
+        left: -100%;
+        top: 0;
+        bottom: 0;
+        width: 80%;
+        max-width: 300px;
+        z-index: 1000;
+        transition: left 0.3s ease;
+      }
+
+      #toc.active {
+        left: 0;
+      }
+
+      main {
+        margin-left: 0;
+      }
+
+      #toc-toggle {
+        display: block;
+        position: fixed;
+        top: 10px;
+        left: 10px;
+        z-index: 1001;
+        background-color: #4A5568;
+        color: white;
+        padding: 5px 10px;
+        border-radius: 5px;
+      }
+    }
+
+    @media (min-width: 769px) {
+      #toc-toggle {
+        display: none;
+      }
+    }
     </style>
 </head>
 <body class="bg-gray-50">
+    <button id="toc-toggle" class="md:hidden">目次</button>
     <div class="flex">
         <!-- サイドバー（目次） -->
-        <nav class="fixed w-64 h-screen overflow-y-auto bg-white shadow-lg p-4">
+        <nav id="toc" class="w-64 h-screen bg-white p-6 overflow-y-auto fixed">
             <h2 class="text-xl font-bold mb-4">目次</h2>
             <div class="space-y-2">
                 <a href="#section1" class="toc-link">🌟 モチベーション設計</a>
@@ -2269,6 +2310,31 @@
     // 初期表示時のアクティブリンク設定
     updateActiveLink(document.querySelector('section').getAttribute('id'));
   });
+
+// 画面サイズに応じて目次の表示/非表示を切り替える
+function toggleTocVisibility() {
+      const toc = document.getElementById('toc');
+      const main = document.querySelector('main');
+      if (window.innerWidth <= 768) {
+        toc.classList.remove('active');
+        main.style.marginLeft = '0';
+      } else {
+        toc.classList.remove('active');
+        main.style.marginLeft = '16rem'; // 64 * 0.25rem = 16rem (Tailwind's w-64)
+      }
+    }
+
+    // 初期ロード時とリサイズ時に実行
+    window.addEventListener('load', toggleTocVisibility);
+    window.addEventListener('resize', toggleTocVisibility);
+
+    // トグルボタンのイベントリスナー
+    document.getElementById('toc-toggle').addEventListener('click', function() {
+      const toc = document.getElementById('toc');
+      toc.classList.toggle('active');
+    });
+
+
   </script>
 </body>
 </html>
